@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --account=ajiteshs_1045
+#SBATCH --account=glucas_540
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
 #SBATCH --time=48:00:00
