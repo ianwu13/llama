@@ -4,7 +4,7 @@
 #SBATCH --gres=gpu:v100:1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
-#SBATCH --time=1:00:00
+#SBATCH --time=00:05:00
 
 TARGET_FOLDER="weights"
 MODEL_SIZE="7B"
@@ -26,7 +26,7 @@ conda activate llama
 
 # run
 echo ""
-echo "Running test predictions"
+echo "Running test predictions with model size ${MODEL_SIZE}"
 echo ""
 
 torchrun --nproc_per_node ${MP_DICT[$MODEL_SIZE]} example.py --ckpt_dir $TARGET_FOLDER/$MODEL_SIZE --tokenizer_path $TARGET_FOLDER/tokenizer.model
