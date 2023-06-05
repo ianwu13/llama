@@ -8,7 +8,7 @@
 #SBATCH --time=00:05:00
 
 TARGET_FOLDER="weights"
-MODEL_SIZE="30BB"
+MODEL_SIZE="30B"
 
 declare -A MP_DICT
 MP_DICT["7B"]="1"
