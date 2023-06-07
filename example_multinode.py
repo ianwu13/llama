@@ -40,17 +40,21 @@ def setup_model_parallel() -> Tuple[int, int]:
 def load(
     ckpt_dir: str,
     tokenizer_path: str,
-    local_rank: int,
+    global_rank: int,
     world_size: int,
     max_seq_len: int,
     max_batch_size: int,
 ) -> LLaMA:
+    print(f'in "load()" - gr: {global_rank}')
+
     start_time = time.time()
     checkpoints = sorted(Path(ckpt_dir).glob("*.pth"))
     assert world_size == len(
         checkpoints
     ), f"Loading a checkpoint for MP={len(checkpoints)} but world size is {world_size}"
-    ckpt_path = checkpoints[local_rank]
+    ckpt_path = checkpoints[global_rank]
+    print(f'checkpoints list: {checkpoints}')
+
     print("Loading")
     print(f'CHKPT_PTH: {ckpt_path}')
 
@@ -82,6 +86,7 @@ def main(
     max_batch_size: int = 32,
 ):
     global_rank, world_size = setup_model_parallel()
+    print(f'test - {global_rank}')
     if global_rank > 0:
         sys.stdout = open(os.devnull, "w")
 
