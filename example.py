@@ -31,7 +31,8 @@ def setup_model_parallel() -> Tuple[int, int]:
 
     # seed must be the same in all processes
     torch.manual_seed(1)
-    return local_rank, world_size
+    # return local_rank, world_size
+    return global_rank, world_size
 
 
 @record
