@@ -17,6 +17,9 @@ from llama import ModelArgs, Transformer, Tokenizer, LLaMA
 
 
 def setup_model_parallel() -> Tuple[int, int]:
+    global_rank = int(os.environ.get("RANK", -1))
+    print(f'Working on GPU with global rank {global_rank}')
+
     local_rank = int(os.environ.get("LOCAL_RANK", -1))
     world_size = int(os.environ.get("WORLD_SIZE", -1))
 
