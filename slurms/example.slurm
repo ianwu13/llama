@@ -12,8 +12,6 @@ MODEL_SIZE="7B"
 declare -A MP_DICT
 MP_DICT["7B"]="1"
 MP_DICT["13B"]="2"
-MP_DICT["30B"]="4"
-MP_DICT["65B"]="8"
 
 # Change to proper directory
 cd ..

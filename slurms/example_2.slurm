@@ -11,8 +11,6 @@ TARGET_FOLDER="weights"
 MODEL_SIZE="30B"
 
 declare -A MP_DICT
-MP_DICT["7B"]="1"
-MP_DICT["13B"]="2"
 MP_DICT["30B"]="4"
 MP_DICT["65B"]="8"
 
@@ -30,6 +28,6 @@ echo ""
 echo "Running test predictions with model size ${MODEL_SIZE}"
 echo ""
 
-torchrun --nproc_per_node ${MP_DICT[$MODEL_SIZE]} example.py --ckpt_dir $TARGET_FOLDER/$MODEL_SIZE --tokenizer_path $TARGET_FOLDER/tokenizer.model
+torchrun --nnodes 2 --nproc_per_node ${MP_DICT[$MODEL_SIZE]} example.py --ckpt_dir $TARGET_FOLDER/$MODEL_SIZE --tokenizer_path $TARGET_FOLDER/tokenizer.model
 
 echo "DONE"
