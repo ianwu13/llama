@@ -11,6 +11,8 @@
 
 #SBATCH --time=00:10:00
 
+#SBATCH --output=multinode_llama.%j.out
+
 TARGET_FOLDER="weights"
 MODEL_SIZE="30B"
 

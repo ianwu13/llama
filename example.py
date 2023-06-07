@@ -32,7 +32,6 @@ def setup_model_parallel() -> Tuple[int, int]:
     return local_rank, world_size
 
 
-@record
 def load(
     ckpt_dir: str,
     tokenizer_path: str,
