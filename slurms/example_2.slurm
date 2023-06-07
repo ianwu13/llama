@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=llama-30b
+#SBATCH --job-name=llama-65b
 #SBATCH --account=glucas_540
 #SBATCH --partition=gpu
 

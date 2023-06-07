@@ -86,7 +86,7 @@ def main(
     max_batch_size: int = 32,
 ):
     global_rank, world_size = setup_model_parallel()
-    print(f'test - {global_rank}')
+    print(f'in "main()" - {global_rank}')
     if global_rank > 0:
         sys.stdout = open(os.devnull, "w")
 
@@ -96,30 +96,9 @@ def main(
 
     prompts = [
         # For these prompts, the expected answer is the natural continuation of the prompt
-        "I believe the meaning of life is",
-        "Simply put, the theory of relativity states that ",
-        "Building a website can be done in 10 simple steps:\n",
-        # Few shot prompts: https://huggingface.co/blog/few-shot-learning-gpt-neo-and-inference-api
-        """Tweet: "I hate it when my phone battery dies."
-Sentiment: Negative
-###
-Tweet: "My day has been 👍"
-Sentiment: Positive
-###
-Tweet: "This is the link to the article"
-Sentiment: Neutral
-###
-Tweet: "This new music video was incredibile"
-Sentiment:""",
-        """Translate English to French:
-
-sea otter => loutre de mer
-
-peppermint => menthe poivrée
-
-plush girafe => girafe peluche
-
-cheese =>""",
+        "1 1 2 3 5 8",
+        "Here is the recommendation letter that I wrote for an application to a dragon feeder position at the Magic Unicorn Corporation: Dear recruiter,",
+        "Did you know that Yann LeCun dropped a rap album last year? We listened to it and here’s what we thought:",
     ]
     results = generator.generate(
         prompts, max_gen_len=256, temperature=temperature, top_p=top_p
