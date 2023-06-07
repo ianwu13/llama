@@ -13,6 +13,8 @@ from pathlib import Path
 
 from fairscale.nn.model_parallel.initialize import initialize_model_parallel
 
+from torch.distributed.elastic.multiprocessing.errors import record
+
 from llama import ModelArgs, Transformer, Tokenizer, LLaMA
 
 
@@ -32,6 +34,7 @@ def setup_model_parallel() -> Tuple[int, int]:
     return local_rank, world_size
 
 
+@record
 def load(
     ckpt_dir: str,
     tokenizer_path: str,
