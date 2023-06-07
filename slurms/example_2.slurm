@@ -3,7 +3,7 @@
 #SBATCH --account=glucas_540
 #SBATCH --partition=gpu
 
-#SBATCH --nodes=2
+#SBATCH --nodes=4
 #SBATCH --ntasks-per-node=1
 
 #SBATCH --cpus-per-task=32
@@ -14,7 +14,7 @@
 #SBATCH --output=TEST_multinode_llama.%j.out
 
 TARGET_FOLDER="weights"
-MODEL_SIZE="30B"
+MODEL_SIZE="65B"
 
 declare -A NNODE_DICT
 NNODE_DICT["7B"]="1"
